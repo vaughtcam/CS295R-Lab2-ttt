@@ -21,11 +21,11 @@ const calculateWinner = (squares) => {
     if (squares[a] &&
       squares[a] === squares[b] &&
       squares[a] === squares[c]) {
-      return { player: squares[a], winningLine: this.lines[i] };
+      return { winner: squares[a], winningLine: lines[i] };
       //Mari's version has winner instead of player, be aware of that if player does not work//
     }
   }
-  return { player: null, winningLine: [] };
+  return { winner: null, winningLine: [] };
 }
 
 function App() {
@@ -42,7 +42,7 @@ function App() {
         "square-winner" : "square-full";
     const enabled = (winner.winner == null && squares[i] == null) ? true : false;
     const eventHandler = (enabled) ? handleClick : () => { };
-    const value = (squares[i]) == null ? squares[i] : "";
+    const value = (squares[i]) != null ? squares[i] : "";
 
     return (
       <Square
